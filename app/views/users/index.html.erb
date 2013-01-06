@@ -1,0 +1,14 @@
+<h1>All Users</h1>
+
+<% @users.each do |user| %>
+	<ul>
+		<li>
+			<%= user.first_name %> <%= user.last_name %> | <%= user.email %>
+			<% if signed_in? %>
+			<% if current_user.admin? %>
+			- <%= link_to "Delete", user, method: :delete, data: { confirm: "Are you sure?"} %>
+			<% end %>
+			<% end %>
+		</li>
+	</ul>
+<% end %>

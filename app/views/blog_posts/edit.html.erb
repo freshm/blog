@@ -1,0 +1,32 @@
+<div class="input_form">
+	<h1>Edit Post</h1>
+
+	<%= form_for(@blogpost) do |f| %>
+		<% if @blogpost.errors.any? %>
+			<div class="error_messages">
+				<h2>Form is invalid</h2>
+				<ul>
+					<% for message in @blogpost.errors.full_messages %>
+					<li>
+						<%= message %>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+		<div class="field">
+			<%= f.label :title %>
+			<%= f.text_field :title %>
+		</div>
+	
+		<div class="field">
+			<%= f.label :content %>
+			<br />
+			<%= f.text_area :content %>
+		</div>
+	
+		<div class="action">
+			<%= submit_tag "Edit entry", class: "submit" %>
+		</div>
+	<% end %>
+</div>

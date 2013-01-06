@@ -1,0 +1,14 @@
+<div class="posting">
+	<h2><%= @blogpost.title %></h2>
+	<p><%= @blogpost.content %></p>
+	<p class="post_date">
+		Posted on <%= @blogpost.created_at.strftime("%d %B %y, %I:%M %p") %>
+		by <%= post_by_poster(@blogpost) %>
+	</p>
+<!--
+	<br />
+	<hr />
+	<br />
+	<h2>Comments</h2>
+-->
+</div>

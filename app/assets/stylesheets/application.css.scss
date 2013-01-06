@@ -1,0 +1,204 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+body {
+  background-color: #bbb;
+  margin: 0;
+  padding: 0;
+}
+
+#menu {
+  height: 25px;
+  width: 100%;
+  background-color: #007700;
+  border-style: dotted;
+  border-color: #009900;
+  padding-top: 3px;
+  
+  a {
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  #headline {
+    float: left;
+    text-decoration: none;
+  }
+  
+  ul {
+    text-align: right;
+    margin: 0px;
+    margin-right: 12px;
+    
+    li {
+      display: inline;
+      margin-left: 6px;
+      padding-left: 6px;
+    }
+  }
+}
+ 
+
+#main_container {
+  background-color: #ffffff;
+  margin-right: auto;
+  margin-left: auto;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  padding-bottom: 10px;
+  
+  
+  .center {
+    text-align: center;
+    a {
+      color: #000;
+      align: center;
+      text-decoration: none;
+      &:visited {
+        color: #000;
+      }
+    }
+  }
+  .posting {
+    margin: 7.5px 15% 10px 10%;
+    padding-left: 17px;
+    padding-right: 17px;
+    padding-bottom: 6px;
+    text-align: justify;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000;
+    
+    .post_date {
+      padding-top: 6px;
+      text-align: right;
+      font-size: 12px;
+      font-style: italic;
+    }    
+    
+    h2 {
+      text-decoration: underline;
+    }
+    
+    .admin_option {
+      font-weight: bold;
+      
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  .alert {
+    color: #ddd;
+    border-style: solid;
+    border-color: #bb0000;
+    background-color: #ee0000;
+  }
+  
+  .notice {
+    color: #000;
+  }
+  
+  .input_form {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    
+    h1 {
+      text-align: center;
+    }
+    
+    textarea {
+      width: 100%;
+    }
+    
+    .field {
+      label {
+        display: block;
+        float: left;
+        width: 190px;
+      }
+      
+      input {
+        margin: 2px 0 20px 0;
+      }
+    }
+    
+    .submit {
+      height: 40px;
+      width: 150px;
+      font-weight: bold;
+    }
+  }
+  
+  .signup {
+    background-color: #aaa;
+    border-width: 3.5px;
+    border-style: outset;
+    padding: 0 2px;
+  }
+  
+  .error_messages {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border-style: solid;
+    border-width: 6px;
+    border-color: #800;
+    background-color: #FF6363;
+    margin-bottom: 6px;
+  }
+}
+
+.alert {
+  color: #dddddd;
+  border-style: solid;
+  border-color: #bb0000;
+  background-color: #ee0000;
+}
+
+.notice {
+  text-align: center;
+  color: #777;
+  border-style: solid;
+  border-color: #1A381D;
+  background-color: #80D189;
+}
+
+#footer_container {
+  text-align: right;
+  padding-right: 5px;
+  margin-top: 40px;
+  
+  ul {
+    margin: 0px;
+    padding: 0px;
+    text-align: right;
+    
+    li {
+      display: inline;
+      margin: 3px;
+    }    
+    
+     a {
+      text-decoration: none;
+      color: #000;
+      font-weight: normal;
+    }
+  }
+}
+

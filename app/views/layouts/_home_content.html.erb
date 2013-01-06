@@ -1,0 +1,30 @@
+<% if signed_in? %>
+	<% if current_user.admin? %>
+	<FORM METHOD="LINK" ACTION=<%= new_blog_post_path %>>
+		<INPUT TYPE="submit" VALUE="Add a new entry">
+	</FORM>
+	<% end %>
+
+	<% @blogposts.each do |blogpost| %>
+		<div class="posting">
+			<h2><%= link_to blogpost.title, blogpost %></h2>
+			<p><%= blogpost.content %></p>
+			<p class="post_date">
+				Posted on <%= blogpost.created_at.strftime("%d %B %y, %I:%M %p") %>
+				by <%= post_by_poster(blogpost) %>
+			</p>
+			
+			<% if current_user.admin? %>
+				<div class="admin_option">
+					<%= link_to "Edit", edit_blog_post_path(blogpost) %>
+					<%= link_to "Delete", blogpost, method: :delete, data: { confirm: "Are you sure?"} %>
+				</div>
+			<% end %>
+		</div>
+	<% end %>
+
+<% else %>
+	<FORM METHOD="LINK" ACTION=<%= signup_path %>>
+		<INPUT TYPE="submit" VALUE="Sign up!">
+	</FORM>
+<% end %>
