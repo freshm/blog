@@ -1,6 +1,5 @@
 class StaticPagesController < ApplicationController
   def home
-  	@blogposts = BlogPost.all
-    @blogposts = BlogPost.paginate(page: params[:page])
+    @blogposts = BlogPost.paginate(page: params[:page], per_page: 7)
   end
 end

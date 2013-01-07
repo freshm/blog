@@ -1,0 +1,23 @@
+<div class="input_form">
+    <%= form_for([@blogpost, @comment]) do |f| %>
+        <% if @comment.errors.any? %>
+            <div class="error_messages">
+                <h2>Form is invalid</h2>
+                <ul>
+                    <% for message in @comment.errors.full_messages %>
+                        <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+        
+        <div class="field">
+            <%= f.label :content %>
+            <%= f.text_area :content %>
+        </div>
+        
+        <div class="">
+            <%= f.submit "Add comment", class: "submit" %>
+        </div>
+    <% end %>
+</div>

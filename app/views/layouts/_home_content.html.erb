@@ -5,6 +5,7 @@
 	</FORM>
 	<% end %>
 
+    <%= will_paginate @blogposts %>
 	<% @blogposts.each do |blogpost| %>
 		<div class="posting">
 			<h2><%= link_to blogpost.title, blogpost %></h2>
@@ -22,6 +23,7 @@
 			<% end %>
 		</div>
 	<% end %>
+    <%= will_paginate @blogposts %>
 
 <% else %>
 	<FORM METHOD="LINK" ACTION=<%= signup_path %>>

@@ -1,0 +1,25 @@
+<% @comments.each do |comment| %>
+    <div class="comment">
+        <p><%= comment.content %></p>
+        <br />
+        <%="#{time_ago_in_words(comment.created_at)}"%> ago  by 
+        <%= link_to "#{[comment.user.first_name, comment.user.last_name].join(' ')}", comment.user%>
+         -
+        <% if signed_in? %>
+            <% if comment_by_user?(comment.user) %>
+                <%= link_to "Edit",edit_blog_post_comment_path(@blogpost, comment), class: "admin_option" %>
+            <% end %>
+            
+            <% if current_user.admin? %>
+                    <%= link_to "Delete", blog_post_comment_path(@blogpost, comment),
+                                                 method: :delete,
+                                                 data: { confirm: "Are you sure?"}, 
+                                                 class: "admin_option" %>
+            <% end %>
+        <% end %>
+    </div>
+<% end %>
+<br />
+<%= button_to "Create a new comment", new_blog_post_comment_path(@blogpost),
+                                      class: "new_comment",
+                                      method: "get" %>

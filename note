@@ -1,1 +1,7 @@
 benutzer können blog einträge speicerh
+
+
+
+add_index nachschauen
+
+bei :belongs_to wird eine methode für die klasse erstellt (beispiel: comment belongs_to :user -> Comment.first.user)

@@ -1,5 +1,5 @@
 class BlogPostsController < ApplicationController
-  before_filter :have_permission
+  before_filter :have_permission, only: [:new, :create, :edit, :update]
   
   def new
     @blogpost = BlogPost.new
@@ -16,6 +16,7 @@ class BlogPostsController < ApplicationController
   
   def show
     @blogpost = BlogPost.find(params[:id])
+    @comments = BlogPost.find(params[:id]).comments.all
   end
   
   def destroy

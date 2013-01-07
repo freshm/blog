@@ -1,6 +1,10 @@
 Blog::Application.routes.draw do
   resources :users
-  resources :blog_posts
+  resources :blog_posts do
+    resources :comments
+  end
+
+  
   resources :sessions, only: [:new, :create, :destroy]
   
   root :to => 'static_pages#home'
