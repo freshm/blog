@@ -6,8 +6,10 @@
 			
 			
 			<% if signed_in? %>
-				<li><%= link_to "Profile", current_user %></li>
-				<li><%= link_to "Users", users_path %></li>
+				<li><%= link_to "#{current_user.first_name + " " + current_user.last_name}", current_user %></li>
+				<% if current_user.admin? %>
+				    <li><%= link_to "Users", users_path %></li>
+				<% end %>
 				<li><%= link_to "Sign out", logout_path %></li>
 
 				

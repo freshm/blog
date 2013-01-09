@@ -15,12 +15,15 @@
 				by <%= post_by_poster(blogpost) %>
 			</p>
 			
-			<% if current_user.admin? %>
-				<div class="admin_option">
-					<%= link_to "Edit", edit_blog_post_path(blogpost) %>
-					<%= link_to "Delete", blogpost, method: :delete, data: { confirm: "Are you sure?"} %>
-				</div>
-			<% end %>
+			<div class="admin_option">
+    			<%= link_to "Add to favs", save_post_path(current_user, blogpost) %>
+    			<% if current_user.admin? %>				
+        			<%= link_to "Edit", edit_blog_post_path(blogpost) %>
+        			<%= link_to "Delete", blogpost,
+        			              method: :delete, 
+        			              data: { confirm: "Are you sure?"} %>
+    			<% end %>
+			</div>
 		</div>
 	<% end %>
     <%= will_paginate @blogposts %>

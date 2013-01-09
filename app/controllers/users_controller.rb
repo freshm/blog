@@ -1,12 +1,18 @@
 class UsersController < ApplicationController
   before_filter :signed_in_user, only: [:edit, :update]
   before_filter :correct_user, only: [:edit, :update]
+  before_filter :correct_user_for_profile, only: :show
+  before_filter :is_admin, only: :index
+  
+  
   def index
     @users = User.all
   end
 
   def show
     @user = User.find(params[:id])
+    @comments = @user.comments.paginate(page: params[:page], per_page: 7)
+    @savedposts = SavedPost.where(user_id: @user.id)
   end
 
   def new
@@ -52,5 +58,14 @@ class UsersController < ApplicationController
   def correct_user
     @user = User.find(params[:id])
     redirect_to(root_path) unless current_user?(@user)
+  end
+  
+  def correct_user_for_profile
+    @user = User.find(params[:id])
+    redirect_to(root_path) unless current_user?(@user) || current_user.admin?
+  end
+  
+  def is_admin
+    redirect_to(root_path) unless current_user.admin?
   end
 end

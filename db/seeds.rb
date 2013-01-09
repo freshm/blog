@@ -8,7 +8,7 @@
 
 user = User.create(first_name: "Marvin", last_name: "Ahlgrimm", email: "m.j.ahlgrimm@gmx.de", password: "foobar", password_confirmation: "foobar")
 user.toggle!(:admin)
-user2 = User.create(first_name: "Jan", last_name: "Foo", email: "m.j.ahlgrimm@gmx.de", password: "foobar", password_confirmation: "foobar")
+user2 = User.create(first_name: "Jan", last_name: "Foo", email: "anothermail@gmx.de", password: "foobar", password_confirmation: "foobar")
 user2.toggle!(:admin)
 (1..50).each do |i|
 	User.create(first_name: "Test#{i}", last_name: "Example", email: "test#{i}@example.de", password: "foobar", password_confirmation: "foobar")

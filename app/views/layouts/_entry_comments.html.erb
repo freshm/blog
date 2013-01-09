@@ -10,7 +10,7 @@
                 <%= link_to "Edit",edit_blog_post_comment_path(@blogpost, comment), class: "admin_option" %>
             <% end %>
             
-            <% if current_user.admin? %>
+            <% if comment_by_user?(comment.user) || current_user.admin? %>
                     <%= link_to "Delete", blog_post_comment_path(@blogpost, comment),
                                                  method: :delete,
                                                  data: { confirm: "Are you sure?"}, 

@@ -13,7 +13,7 @@
  */
 
 body {
-  background-color: #bbb;
+  background-color: #fff;
   margin: 0;
   padding: 0;
 }
@@ -55,10 +55,10 @@ a {
  
 
 #main_container {
-  background-color: #ffffff;
   margin-right: auto;
   margin-left: auto;
   border-style: solid;
+  border-bottom-style: none;
   border-color: #000000;
   border-width: 1px;
   padding-bottom: 10px;
@@ -181,6 +181,32 @@ a {
     background-color: #FF6363;
     margin-bottom: 6px;
   }
+  
+  .user_page {
+    overflow: hidden;
+    padding-left: 20px;
+    
+    .details {
+      float: left;
+    }
+    
+    .all_posts {
+      float: right;
+      text-align: justify;
+      margin-right: 10px;
+      padding-right: 5px;
+      width: 60%;
+      
+      .user_post {
+        padding: 0 7.5px 5px 7.5px;
+        border-style: solid;
+        border-width: 1px;
+        margin-bottom: 3px;
+      }
+    }
+  }
+  
+
 }
 
 .alert {

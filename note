@@ -5,3 +5,23 @@ benutzer können blog einträge speicerh
 add_index nachschauen
 
 bei :belongs_to wird eine methode für die klasse erstellt (beispiel: comment belongs_to :user -> Comment.first.user)
+
+mail validierung
+eigene kommentare löschen
+mails beim anmelden schicken
+freischaltung durch bestätigung der mail
+captcha
+login -> home - done 
+user liste nur für admin - done
+bild hochladen
+Friendlist für users
+user profil mehr details
+fav posts als menu punkt
+icons (andere fragen ob vorhanden)
+anstatt profile den namen angeben - done
+
+
+
+
+admins können user zu admins befördern
+logik der gespeicherten feeds aus html in ruby/rails auslagern

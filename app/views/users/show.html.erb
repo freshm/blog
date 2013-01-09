@@ -1,5 +1,43 @@
-<h1>Profile: <%= @user.first_name %> <%= @user.last_name %></h1>
-
-<div class="details">
-	<label>E-Mail: </label><%= @user.email %>
+<div class="user_page">
+    <% if current_user?(@user) %>
+        <h1>Your Profile</h1>
+    <% else %>
+        <h1>Profile</h1>
+    <% end %>
+    
+    <div class="details">
+        <label>Name: </label><%= @user.first_name %> <%= @user.last_name %>
+        <br />
+        <label>E-Mail: </label><%= @user.email %>
+        
+        <% if current_user?(@user) %>
+            <br />
+            <br />
+            <%= button_to "Edit your Profile", edit_user_path(@user), method: "get"%>
+        <% end %>  
+    </div>
+    <% @savedposts.each do |savedpost| %>
+        <%= BlogPost.find_by_id(savedpost.blog_post_id).title %>
+        <br />
+    <% end %>
+    <div class="all_posts">
+        <h2>Comments:</h2>
+        <% unless @comments.any? %>
+            <p>There are no comments.</p>
+        <% end %>
+        
+        <%= will_paginate @comments %>
+            <% @comments.each do |comment| %>
+                <div class="user_post">
+                    <h3>
+                        Posted <%= "#{time_ago_in_words(comment.created_at)}" %> ago in
+                        <%= link_to comment.blog_post.title, comment.blog_post %>
+                    </h3>
+                    <%= comment.content %>
+                    <br />
+                </div>
+            <% end %>
+        <%= will_paginate @comments %>
+    </div>
+    <div class="clear_both"></div>
 </div>
