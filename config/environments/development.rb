@@ -34,4 +34,7 @@ Blog::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  RECAPTCHA_PUBLIC_KEY= '6LfXhdsSAAAAANH44V8bx4zGNX4p0GgwsYA3W5tH'
+  RECAPTCHA_PRIVATE_KEY= '6LfXhdsSAAAAAG0-0Zjib9V9HbmlRQUEExMtRd8w'
 end

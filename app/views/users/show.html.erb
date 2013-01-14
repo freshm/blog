@@ -16,10 +16,6 @@
             <%= button_to "Edit your Profile", edit_user_path(@user), method: "get"%>
         <% end %>  
     </div>
-    <% @savedposts.each do |savedpost| %>
-        <%= BlogPost.find_by_id(savedpost.blog_post_id).title %>
-        <br />
-    <% end %>
     <div class="all_posts">
         <h2>Comments:</h2>
         <% unless @comments.any? %>

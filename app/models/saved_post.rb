@@ -3,7 +3,4 @@ class SavedPost < ActiveRecord::Base
   
   belongs_to :user
   belongs_to :blog_post
-  
-  validates :user, presence: :true
-  validates :blog_post, presence: :true
 end

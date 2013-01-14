@@ -31,6 +31,9 @@
 			<%= f.label :password_confirmation %>
 			<%= f.password_field :password_confirmation %>
 		</div>
+		<div class="captcha">
+		  <%= recaptcha_tags %>
+		</div>
 		<div class="action">
 			<%= f.submit "Sign up!", class: "submit" %>
 		</div>

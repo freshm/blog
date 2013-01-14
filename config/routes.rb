@@ -1,8 +1,12 @@
 Blog::Application.routes.draw do
-  resources :users
+  resources :users do
+    resources :saved_posts, only: [:index]
+  end
   resources :blog_posts do
     resources :comments
   end
+  
+  resources :saved_posts, only: [:create, :destroy]
   
   resources :sessions, only: [:new, :create, :destroy]
   
@@ -10,6 +14,9 @@ Blog::Application.routes.draw do
   match '/login',  to: 'sessions#new'
   match '/logout', to: 'sessions#destroy'
   match '/signup', to: 'users#new'
+  match '/save/:blogpost_id', to: 'saved_posts#create', as: 'fav_blogpost'
+  match '/delete/:blogpost_id', to: 'saved_posts#destroy', as: 'unfav_blogpost'
+
   ##match '/unsavepost', to: 'saved_pages#destroy'
   # The priority is based upon order of creation:
   # first created -> highest priority.

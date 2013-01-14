@@ -16,7 +16,12 @@
 			</p>
 			
 			<div class="admin_option">
-    			<%= link_to "Add to favs", save_path(blogpost) %>
+			    <% if current_user.saved_post?(blogpost) %>
+			     <%= link_to "Remove from favs", unfav_blogpost_path(blogpost), method: :destroy %>
+    			<% else %>
+    			 <%= link_to "Add to favs", fav_blogpost_path(blogpost) %>
+    			<% end %>
+    			
     			<% if current_user.admin? %>				
         			<%= link_to "Edit", edit_blog_post_path(blogpost) %>
         			<%= link_to "Delete", blogpost,

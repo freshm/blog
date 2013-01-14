@@ -7,6 +7,7 @@ class BlogPostsController < ApplicationController
   
   def create
     @blogpost = current_user.blog_posts.build(params[:blog_post])
+    @blogpost.user = current_user
     if @blogpost.save
       redirect_to root_path, notice: "Created entry."
     else

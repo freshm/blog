@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:edit, :update]
+  before_filter :signed_in_user, only: [ :edit, :update]
   before_filter :correct_user, only: [:edit, :update]
   before_filter :correct_user_for_profile, only: :show
   before_filter :is_admin, only: :index
@@ -20,9 +20,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    if @user.save
+    if verify_recaptcha(message: "You typed in the wrong captcha!") && @user.save
+      Notifier.signed_up(@user).deliver
+      
       redirect_to root_url, notice: "Signed up!"
     else
+      flash.delete(:recaptcha_error)
       render "new"
     end
   end
@@ -47,7 +50,7 @@ class UsersController < ApplicationController
       render "edit"
     end
   end
-
+  
   private
 
   def signed_in_user

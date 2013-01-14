@@ -6,19 +6,22 @@ add_index nachschauen
 
 bei :belongs_to wird eine methode für die klasse erstellt (beispiel: comment belongs_to :user -> Comment.first.user)
 
-mail validierung
-eigene kommentare löschen
-mails beim anmelden schicken
-freischaltung durch bestätigung der mail
-captcha
+user können einträge speichern - done
+mail validierung - done
+eigene kommentare löschen - done
+mails beim anmelden schicken - done?
+anstatt profile den namen angeben - done
 login -> home - done 
 user liste nur für admin - done
+captcha - done
+
+freischaltung durch bestätigung der mail
 bild hochladen
 Friendlist für users
 user profil mehr details
 fav posts als menu punkt
 icons (andere fragen ob vorhanden)
-anstatt profile den namen angeben - done
+
 
 
 
