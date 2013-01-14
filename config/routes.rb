@@ -4,16 +4,12 @@ Blog::Application.routes.draw do
     resources :comments
   end
   
-  resources :saved_posts, only: [:new, :create, :destroy]
-
-  
   resources :sessions, only: [:new, :create, :destroy]
   
   root :to => 'static_pages#home'
   match '/login',  to: 'sessions#new'
   match '/logout', to: 'sessions#destroy'
   match '/signup', to: 'users#new'
-  match '/savepost/:user_id/:blog_post_id', to: 'static_pages#save_post_for_user', as: "save_post"
   ##match '/unsavepost', to: 'saved_pages#destroy'
   # The priority is based upon order of creation:
   # first created -> highest priority.

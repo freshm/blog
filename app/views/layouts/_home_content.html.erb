@@ -16,7 +16,7 @@
 			</p>
 			
 			<div class="admin_option">
-    			<%= link_to "Add to favs", save_post_path(current_user, blogpost) %>
+    			<%= link_to "Add to favs", save_path(blogpost) %>
     			<% if current_user.admin? %>				
         			<%= link_to "Edit", edit_blog_post_path(blogpost) %>
         			<%= link_to "Delete", blogpost,
