@@ -17,7 +17,9 @@
 			
 			<div class="admin_option">
 			    <% if current_user.saved_post?(blogpost) %>
-			     <%= link_to "Remove from favs", unfav_blogpost_path(blogpost), method: :destroy %>
+			     <%= link_to "Remove from favs", unfav_blogpost_path(blogpost),
+			                                     method: :delete,
+			                                     data: { confirm: "Unsave post?"} %>
     			<% else %>
     			 <%= link_to "Add to favs", fav_blogpost_path(blogpost) %>
     			<% end %>

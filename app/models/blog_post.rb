@@ -8,4 +8,5 @@ class BlogPost < ActiveRecord::Base
   validates :user_id, presence: true
   
   default_scope order: 'blog_posts.created_at DESC'
+  
 end
