@@ -1,6 +1,6 @@
 class SavedPostsController < ApplicationController
   def index
-    @savedposts = SavedPost.where(params[:user_id])
+    @savedposts = SavedPost.where(user_id: params[:user_id]).paginate(page: params[:page], per_page: 6)
   end
   
   def create

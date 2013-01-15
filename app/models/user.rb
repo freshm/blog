@@ -24,4 +24,8 @@ class User < ActiveRecord::Base
   def unsave_post!(post)
     saved_posts.find_by_blog_post_id(post.id).destroy
   end
+  
+  def full_name
+    [first_name, last_name].join(' ')
+  end
 end

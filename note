@@ -14,16 +14,16 @@ anstatt profile den namen angeben - done
 login -> home - done 
 user liste nur für admin - done
 captcha - done
-
 fav posts als menu punkt
-freischaltung durch bestätigung der mail
+
+link zum profil bei den kommentaren ist nur für die admins sichtbar
+
 bild hochladen
 Friendlist für users
 user profil mehr details
 icons (andere fragen ob vorhanden) - http://fortawesome.github.com/Font-Awesome/
-
-
-
+freischaltung durch bestätigung der mail
+freischaltung des friend requests über e-mail
 
 
 admins können user zu admins befördern

@@ -1,4 +1,12 @@
-<% @savedposts.each do |savedpost| %>
-    <%= savedpost %>
-    <br />
-<% end %>
+<div class="center">
+	<h1>Favourite Posts</h1>
+	
+	<%= will_paginate @savedposts %>
+	<% @savedposts.each do |savedpost| %>
+		<div class="posting">
+			<h3><%= link_to post_name(savedpost), post(savedpost) %></h3>
+			<p><%= post_content(savedpost)%></p>
+		</div>
+	<% end %>
+	<%= will_paginate @savedposts %>
+</div>
