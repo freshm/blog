@@ -1,2 +1,37 @@
 module UsersHelper
+  
+  def country_option
+    ['',
+     'Germany',
+     'England',
+     'France',
+     'Norway', 
+     'Sweden',
+     'Finnland',
+     'Belgium',
+     'Austria',
+     'Greece',
+     'Ireland',
+     'Slovenia',
+     'Romania',
+     'Latvia',
+     'Spain',
+     'Italy',
+     'Malta',
+     'Cyprus',
+     'Portugal',
+     'Netherlands',
+     'Poland',
+     'Luxembourg',
+     'Denmark',
+     'Estonia',
+     'Turkey',
+     'India',
+     'China',
+     'Japan',
+     'America',
+     'Canada',
+     'Australia',
+     'Egypt'].sort
+  end
 end

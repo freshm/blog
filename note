@@ -1,12 +1,5 @@
-benutzer können blog einträge speicerh
-
-
-
 add_index nachschauen
 
-bei :belongs_to wird eine methode für die klasse erstellt (beispiel: comment belongs_to :user -> Comment.first.user)
-
-user können einträge speichern - done
 mail validierung - done
 eigene kommentare löschen - done
 mails beim anmelden schicken - done?
@@ -15,16 +8,24 @@ login -> home - done
 user liste nur für admin - done
 captcha - done
 fav posts als menu punkt - done
+benutzer können blog einträge speichern - done
+user profil mehr details - done
+link zum profil bei den kommentaren ist nur für die admins sichtbar - done 
+bild hochladen - done
 
-link zum profil bei den kommentaren ist nur für die admins sichtbar
-user profil mehr details
 
-bild hochladen
 Friendlist für users
 icons (andere fragen ob vorhanden) - http://fortawesome.github.com/Font-Awesome/
 freischaltung durch bestätigung der mail
 freischaltung des friend requests über e-mail
-
+user detail table stylen
+user hat mehrere hobbies - datenbankeintrag anlegen
 
 admins können user zu admins befördern
 logik der gespeicherten feeds aus html in ruby/rails auslagern
+css reforgen
+
+--------------------------------------------------------------------------------------------------------------
+zum benutzen muss libmagickwand-dev (auf ubuntu) installiert sein, um rmagick zu benutzen (sudo apt-get install libmagickwand-dev)
+
+/home/marvin/.rvm/gems/ruby-1.9.3-p327/gems/activerecord-3.2.9/lib/active_record/connection_adapters/sqlite3_adapter kontrolliereren - fail @ work

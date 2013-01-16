@@ -3,4 +3,6 @@ class SavedPost < ActiveRecord::Base
   
   belongs_to :user
   belongs_to :blog_post
+  
+  validates_uniqueness_of :user_id, scope: :blog_post_id
 end

@@ -1,6 +1,6 @@
 <div class="input_form">
 	<h1>Edit your Profile</h1>
-	<%= form_for(@user) do |f| %>
+	<%= form_for @user, :html => {:multipart => true} do |f| %>
 		<% if @user.errors.any? %>
 			<div class="error_messages">
 				<h2>Form is invalid</h2>
@@ -32,10 +32,33 @@
 			<%= f.password_field :password_confirmation %>
 		</div>
 		<hr />
+        <div class="field">
+            <%= f.label :age %>
+            <%= f.number_field :age %>
+        </div>
 		<div class="field">
 			<%= f.label :hobbies %>
 			<%= f.text_field :hobbies %>
 		</div>
+        <div class="action">
+            <%= f.label :gender %>
+            <%= f.select  :gender, ['', 'Male', 'Female'], class: "select_edit" %>
+        </div>
+        <div class="action">
+            <%= f.label :country %>
+            <%= f.select  :country, country_option, default: '', class: "select_edit" %>
+        </div>
+        <div class="action">
+            <%= f.label :city %>
+            <%= f.text_field :city %>
+        </div>
+        <div class="action">
+            <%= f.label :street %>
+            <%= f.text_field :street %>
+        </div>
+        <div class="action">
+            <%= f.file_field :image %>
+        </div>
 		<div class="action">
 			<%= f.submit "Update", class: "submit" %>
 		</div>

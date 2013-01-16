@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation
+  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation,
+                  :hobbies, :gender, :country, :city, :street, :age, :image
+                  
+                  
   has_many :blog_posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :saved_posts
@@ -12,6 +15,9 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true, format: {with: VALID_EMAIL_REGEX}
   validates :first_name, presence: true, length: {maximum: 30}
   validates :password, presence: true, on: :create
+  
+  mount_uploader :image, ImageUploader
+  
   
   def save_post!(post)
     saved_posts.create(blog_post_id: post.id)
@@ -27,5 +33,9 @@ class User < ActiveRecord::Base
   
   def full_name
     [first_name, last_name].join(' ')
+  end
+  
+  def delete_image(user)
+    user.image.destroy!
   end
 end

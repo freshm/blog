@@ -1,0 +1,57 @@
+<div class="details">
+    <% unless @user.image_url.nil? %>
+        <%= image_tag @user.image_url(:profile).to_s %>
+    <% end %>
+    <table class="user_details">
+        <tr>
+            <td>Name</td>
+            <td><%= @user.full_name %></td>
+        </tr>
+        <tr>
+            <td>E-Mail</td>
+            <td><%= @user.email %></td>
+        </tr>
+        <% unless @user.age.nil?%>
+            <tr>
+                <td>Age</td>
+                <td><%= @user.age %></td>
+            </tr>
+        <% end %>
+        <% unless @user.gender.nil? || @user.gender.empty?%>
+            <tr>
+                <td>Gender</td>
+                <td><%= @user.gender %></td>
+            </tr>
+        <% end %>
+        <% unless @user.hobbies.nil? || @user.hobbies.empty?%>
+            <tr>
+                <td>Hobbies</td>
+                <td><%= @user.hobbies %></td>
+            </tr>
+        <% end %>
+        <% unless @user.country.nil? || @user.country.empty?%>
+            <tr>
+                <td>Country</td>
+                <td><%= @user.country %></td>
+            </tr>
+        <% end %>
+        <% unless @user.city.nil? || @user.city.empty?%>
+            <tr>
+                <td>City</td>
+                <td><%= @user.city %></td>
+            </tr>
+        <% end %>
+        <% unless @user.street.nil? || @user.street.empty?%>
+            <tr>
+                <td>Street</td>
+                <td><%= @user.street %></td>
+            </tr>
+        <% end %>
+    </table>
+
+    <% if current_user?(@user) %>
+        <br />
+        <br />
+        <%= button_to "Edit your Profile", edit_user_path(@user), method: "get"%>
+    <% end %>
+</div>

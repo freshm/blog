@@ -63,6 +63,11 @@ a {
   border-width: 1px;
   padding-bottom: 10px;
   
+  .table_option {
+    text-decoration: underline;
+    font-weight: bold;
+  }
+  
   .captcha {
     margin: -10px 0 7px 0;
   }

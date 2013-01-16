@@ -9,6 +9,8 @@ gem 'sqlite3'
 gem 'bcrypt-ruby'
 gem 'will_paginate'
 gem "recaptcha", :require => "recaptcha/rails"
+gem 'carrierwave'
+gem 'rmagick'
 
 # Gems used only for assets and not required
 # in production environments by default.
