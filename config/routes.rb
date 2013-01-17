@@ -1,6 +1,7 @@
 Blog::Application.routes.draw do
   resources :users do
     resources :saved_posts, only: [:index]
+    resources :friendships, only: [:index]
   end
   resources :blog_posts do
     resources :comments
@@ -16,6 +17,8 @@ Blog::Application.routes.draw do
   match '/signup', to: 'users#new'
   match '/save/:blogpost_id', to: 'saved_posts#create', as: 'fav_blogpost'
   match '/delete/:blogpost_id', to: 'saved_posts#destroy', as: 'unfav_blogpost'
+  match '/add_friend/:user_id', to: 'friendships#create', as: 'add_friend'
+  match '/rm_friend/:user_id', to: 'friendships#destroy', as: 'remove_friend'
 
   ##match '/unsavepost', to: 'saved_pages#destroy'
   # The priority is based upon order of creation:

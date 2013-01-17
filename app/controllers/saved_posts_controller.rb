@@ -6,7 +6,7 @@ class SavedPostsController < ApplicationController
   def create
     @blogpost = BlogPost.find(params[:blogpost_id])
     current_user.save_post!(@blogpost)
-    redirect_to root_path, notice: "Removed from favourites."
+    redirect_to root_path, notice: "Added to favourites."
   end
   
   def destroy
