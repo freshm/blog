@@ -1,8 +1,9 @@
 <% if signed_in? %>
 	<% if current_user.admin? %>
-	<FORM METHOD="LINK" ACTION=<%= new_blog_post_path %>>
-		<INPUT TYPE="submit" VALUE="Add a new entry">
-	</FORM>
+	   <br />
+        <%= link_to "Add a new entry", new_blog_post_path, class: "icon-plus"%>
+    	<br />
+    	<br />
 	<% end %>
 
     <%= will_paginate @blogposts %>
@@ -19,16 +20,18 @@
 			    <% if current_user.saved_post?(blogpost) %>
 			     <%= link_to "Remove from favs", unfav_blogpost_path(blogpost),
 			                                     method: :delete,
-			                                     data: { confirm: "Unsave post?"} %>
+			                                     data: { confirm: "Unsave post?"},
+			                                     class: "icon-star-empty" %>
     			<% else %>
-    			 <%= link_to "Add to favs", fav_blogpost_path(blogpost) %>
+    			 <%= link_to "Add to favs", fav_blogpost_path(blogpost), class: "icon-star" %>
     			<% end %>
     			
     			<% if current_user.admin? %>				
-        			<%= link_to "Edit", edit_blog_post_path(blogpost) %>
+        			<%= link_to "Edit", edit_blog_post_path(blogpost), class: "icon-edit" %>
         			<%= link_to "Delete", blogpost,
         			              method: :delete, 
-        			              data: { confirm: "Are you sure?"} %>
+        			              data: { confirm: "Are you sure?"},
+        			              class: "icon-trash" %>
     			<% end %>
 			</div>
 		</div>
@@ -36,7 +39,5 @@
     <%= will_paginate @blogposts %>
 
 <% else %>
-	<FORM METHOD="LINK" ACTION=<%= signup_path %>>
-		<INPUT TYPE="submit" VALUE="Sign up!">
-	</FORM>
+    <%= link_to "Sign up!", signup_path, class: "icon-signin"%>
 <% end %>

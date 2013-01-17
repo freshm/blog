@@ -2,6 +2,7 @@
     <h1>Your friends</h1>
     <% @friendships.each do |friendship| %>
         <%= link_to friend(friendship).full_name, user_path(friend(friendship).id) %>
+        <%= link_to 'Remove', remove_friend_path(friend(friendship)), class: "icon-remove"%>
         <br />
     <% end %>
 </div>

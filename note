@@ -12,12 +12,14 @@ benutzer können blog einträge speichern - done
 user profil mehr details - done
 link zum profil bei den kommentaren ist nur für die admins sichtbar - done 
 bild hochladen - done
+Friendlist für users - done 
+icons (andere fragen ob vorhanden) - http://fortawesome.github.com/Font-Awesome/ - done
 
-
-Friendlist für users
-icons (andere fragen ob vorhanden) - http://fortawesome.github.com/Font-Awesome/
 freischaltung durch bestätigung der mail
 freischaltung des friend requests über e-mail
+
+post auf home und bei comments in eine partial tun
+user ein default bild geben
 user detail table stylen
 user hat mehrere hobbies - datenbankeintrag anlegen
 

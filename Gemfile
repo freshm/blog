@@ -11,6 +11,7 @@ gem 'will_paginate'
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'carrierwave'
 gem 'rmagick'
+gem 'font-awesome-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

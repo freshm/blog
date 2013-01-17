@@ -13,9 +13,10 @@
                 <% unless current_user.friends?(comment.user)%>
                     <%= link_to 'Remove from friends', remove_friend_path(comment.user),
                                                         method: :delete,
-                                                        data: { confirm: "You sure?" } %>
+                                                        data: { confirm: "You sure?" },
+                                                        class: "icon-ban-circle" %>
                 <% else %>
-                    <%= link_to 'Add to friends', add_friend_path(comment.user) %>
+                    <%= link_to 'Add to friends', add_friend_path(comment.user), class: "icon-plus" %>
                 <% end %>
             </span>
         <% end %>
@@ -23,14 +24,14 @@
         <% if signed_in? %>
             <% if comment_by_user?(comment.user) %>
                 <%= link_to "Edit",edit_blog_post_comment_path(@blogpost, comment),
-                                     class: "admin_option" %>
+                                     class: "icon-edit" %>
             <% end %>
             
             <% if comment_by_user?(comment.user) || current_user.admin? %>
                     <%= link_to "Delete", blog_post_comment_path(@blogpost, comment),
                                                  method: :delete,
                                                  data: { confirm: "Are you sure?"}, 
-                                                 class: "admin_option" %>
+                                                 class: "icon-trash" %>
             <% end %>
         <% end %>
     </div>
