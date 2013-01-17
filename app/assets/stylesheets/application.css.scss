@@ -75,12 +75,6 @@ a {
   
   .center {
     text-align: center;
-    a {
-      align: center;
-      text-decoration: none;
-      &:visited {
-      }
-    }
   }
   
   .entry_comments {
@@ -194,7 +188,6 @@ a {
   .user_page {
     overflow: hidden;
     padding-left: 20px;
-    
     .details {
       float: left;
     }
@@ -223,6 +216,13 @@ a {
   border-style: solid;
   border-color: #bb0000;
   background-color: #ee0000;
+}
+
+.comment_friends {
+  a {
+    text-decoration: none;
+    font-size: 11px;
+  }
 }
 
 .notice {

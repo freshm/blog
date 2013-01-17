@@ -1,0 +1,7 @@
+<div class="center">
+    <h1>Your friends</h1>
+    <% @friendships.each do |friendship| %>
+        <%= link_to friend(friendship).full_name, user_path(friend(friendship).id) %>
+        <br />
+    <% end %>
+</div>

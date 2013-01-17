@@ -8,6 +8,17 @@
         <% else %>
             <%= comment.user.full_name %>
         <% end %>
+        <% if !current_user?(comment.user) %>
+            <span class="comment_friends">
+                <% unless current_user.friends?(comment.user)%>
+                    <%= link_to 'Remove from friends', remove_friend_path(comment.user),
+                                                        method: :delete,
+                                                        data: { confirm: "You sure?" } %>
+                <% else %>
+                    <%= link_to 'Add to friends', add_friend_path(comment.user) %>
+                <% end %>
+            </span>
+        <% end %>
         <br />
         <% if signed_in? %>
             <% if comment_by_user?(comment.user) %>
