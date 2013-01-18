@@ -1,6 +1,8 @@
 <div class="details">
     <% unless @user.image_url.nil? %>
         <%= image_tag @user.image_url(:profile).to_s %>
+    <% else %>
+    	<%= image_tag("default_avatar.jpg", alt: "Avatar")%>
     <% end %>
     <table class="user_details">
         <tr>
