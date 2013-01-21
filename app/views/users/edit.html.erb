@@ -33,8 +33,11 @@
 		</div>
 		<hr />
         <div class="field">
-            <%= f.label :age %>
-            <%= f.number_field :age %>
+            <%= f.label :birthday %>
+            <%= f.date_select :birthday, order: [:day, :month, :year],
+                                         start_year: Time.now.year - 100,
+                                         end_year: Time.now.year - 2,
+                                         default: {year: 1990} %>
         </div>
 		<div class="field">
 			<%= f.label :hobbies %>

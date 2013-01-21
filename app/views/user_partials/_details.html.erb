@@ -13,10 +13,10 @@
             <td>E-Mail</td>
             <td><%= @user.email %></td>
         </tr>
-        <% unless @user.age.nil?%>
+        <% unless @user.birthday.nil?%>
             <tr>
                 <td>Age</td>
-                <td><%= @user.age %></td>
+                <td><%= @user.birthday %></td>
             </tr>
         <% end %>
         <% unless @user.gender.nil? || @user.gender.empty?%>

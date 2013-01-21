@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :first_name, :last_name, :password, :password_confirmation,
-                  :hobbies, :gender, :country, :city, :street, :age, :image
+                  :hobbies, :gender, :country, :city, :street, :birthday, :image
 
   has_many :blog_posts, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -19,9 +19,7 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true, uniqueness: true, format: {with: VALID_EMAIL_REGEX}
   validates :first_name, presence: true, length: {maximum: 30}
-  validates :password, presence: true, on: :create
-  validates :age, inclusion: { in: 1..120, message: "must be between 1 and 120." }, allow_nil: true, :on => :update
-  
+  validates :password, presence: true, on: :create  
   
   mount_uploader :image, ImageUploader
   
