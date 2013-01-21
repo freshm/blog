@@ -1,0 +1,30 @@
+<% posts.each do |blogpost| %>
+    <div class="posting">
+        <h2><%= link_to blogpost.title, blogpost %></h2>
+        <p>
+            <%= blogpost.content %>
+        </p>
+        <p class="post_date">
+            Posted on <%= blogpost.created_at.strftime("%d %B %y, %I:%M %p") %>
+            by <%= post_by_poster(blogpost) %>
+        </p>
+    
+        <div class="admin_option">
+            <% if current_user.saved_post?(blogpost) %>
+                <%= link_to "Remove from favs", unfav_blogpost_path(blogpost),
+                                                method: :delete,
+                                                data: { confirm: "Unsave post?"},
+                                                class: "icon-star-empty" %>
+            <% else %>
+                <%= link_to "Add to favs", fav_blogpost_path(blogpost), class: "icon-star" %>
+            <% end %>
+    
+            <% if current_user.admin? %>
+                <%= link_to "Edit", edit_blog_post_path(blogpost), class: "icon-edit" %>
+                <%= link_to "Delete", blogpost, method: :delete,
+                                                data: { confirm: "Are you sure?"},
+                                                class: "icon-trash" %>
+            <% end %>
+        </div>
+    </div>
+<% end %>

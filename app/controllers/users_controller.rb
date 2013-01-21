@@ -51,6 +51,18 @@ class UsersController < ApplicationController
     end
   end
   
+  def confirmation
+    user = User.where(id: params[:user_id]).where(confirmation_code: params[:confirmation_code]).first
+    unless user.nil?
+      user.confirmed = true
+      user.confirmation_code = nil
+      user.save
+      redirect_to root_url, notice: "Your E-Mail Address was confirmed!"
+    else
+      redirect_to root_path, alert: "Invalid page."
+    end
+  end
+  
   private
 
   def signed_in_user

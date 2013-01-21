@@ -8,6 +8,7 @@ class Notifier < ActionMailer::Base
   #
   def signed_up(user)
     @user = user
+    @url = 
     
     mail to: user.email, subject: 'Sign Up Confirmation'
   end

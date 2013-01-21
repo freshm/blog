@@ -2,6 +2,10 @@ Dear <%= @user.first_name %><%= @user.last_name %>,
 
 you successfully singed up at the Sample Blog.
 
+To confirm your Account just click this link:
+
+<%= link_to confirmation_url, confirmation_url %>
+
 If you recieved this mail by mistake you are free to delete it.
 
 Sincerly,

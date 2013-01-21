@@ -16,11 +16,12 @@ Friendlist für users - done
 icons (andere fragen ob vorhanden) - http://fortawesome.github.com/Font-Awesome/ - done
 user ein default bild geben - done
 user detail table stylen - done
-thumb-avatar bei den commentaren anzeigen lassen - done 
+thumb-avatar bei den commentaren anzeigen lassen - done
+age in geburtsdatum umwandeln - done
 
 freischaltung durch bestätigung der mail
 freischaltung des friend requests über e-mail
-age in geburtsdatum umwandeln
+
 
 post auf home und bei comments in eine partial tunw
 user hat mehrere hobbies - datenbankeintrag anlegen
@@ -30,4 +31,20 @@ logik der gespeicherten feeds aus html in ruby/rails auslagern
 css reforgen
 
 --------------------------------------------------------------------------------------------------------------
-zum benutzen muss libmagickwand-dev (auf ubuntu) installiert sein, um rmagick zu benutzen (sudo apt-get install libmagickwand-dev)
+zum benutzen muss libmagickwand-dev (auf ubuntu) installiert sein,
+um rmagick zu benutzen (sudo apt-get install libmagickwand-dev)
+
+Assuming given the title that you definitely want to avoid Devise, Authlogic and friends, here's what I think you need to do:
+
+    Create 'confirmation code' and 'confirmed' attributes in your user model.
+    Create a new controller method on your user controller that expects a user id and confirmation code, looks up the user, checks the code in te parameter matches the code stored in the DB and if so clears the code and sets confirmed = true.
+    Create a route that maps e.g. /users/1/confirm/code to your new controller method.
+    Create an ActionMailer template for the e-mail you want to send. This should accept a user as a parameter, and use the confirmation code of the user to send a mail containing a link to your new route.
+    Create an observer for your user model. If the record is created or the e-mail address modified, then generate a random confirmation code, set it into the model and clear the confirmed flag. Then trigger your ActionMailer.
+    Create a helper method which allows views to check if the current use is confirmed.
+    Use this method to enable/disable functionality as appropriate. Remember to protect your controller methods as appropriate as well as your view logic.
+
+
+für random confirmation code SecureRandom.hex(z) benutzen (z für anzhl (z = 1 entspricht 2 char, z = 2 entspricht 4 chars, z = 4 entspricht 8 chars usw.))
+
+http://railscasts.com/episodes/206-action-mailer-in-rails-3
