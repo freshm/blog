@@ -20,7 +20,9 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true, format: {with: VALID_EMAIL_REGEX}
   validates :first_name, presence: true, length: {maximum: 30}
   validates :password, presence: true, on: :create
-
+  validates :age, inclusion: { in: 1..120, message: "must be between 1 and 120." }, allow_nil: true, :on => :update
+  
+  
   mount_uploader :image, ImageUploader
   
   def save_post!(post)

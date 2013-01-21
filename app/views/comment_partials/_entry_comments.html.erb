@@ -1,0 +1,49 @@
+<% @comments.each do |comment| %>
+    <div class="comment">
+        <p><%= comment.content %></p>
+        <p>
+        	<% unless comment.user.image_url.nil? %>
+        		<%= image_tag comment.user.image_url(:thumb).to_s, class: "comment_image" %>
+            <% else %>
+            	<%= image_tag("thumb_default_avatar.jpg", alt: "Avatar", class: "comment_image" ) %>
+            <% end %>
+            
+	        <%="#{time_ago_in_words(comment.created_at)}"%> ago  by
+	        <% if current_user.admin? %>
+	            <%= link_to comment.user.full_name, comment.user%>
+	        <% else %>
+	            <%= comment.user.full_name %>
+	        <% end %>
+	        <% if !current_user?(comment.user) %>
+	            <span class="comment_friends">
+	                <% unless current_user.friends?(comment.user)%>
+	                    <%= link_to 'Remove from friends', remove_friend_path(comment.user),
+	                                                        method: :delete,
+	                                                        data: { confirm: "You sure?" },
+	                                                        class: "icon-ban-circle" %>
+	                <% else %>
+	                    <%= link_to 'Add to friends', add_friend_path(comment.user), class: "icon-plus" %>
+	                <% end %>
+	            </span>
+	        <% end %>
+	        <br />
+	        <% if signed_in? %>
+	            <% if comment_by_user?(comment.user) %>
+	                <%= link_to "Edit",edit_blog_post_comment_path(@blogpost, comment), class: "icon-edit" %>
+	            <% end %>
+	            
+	            <% if comment_by_user?(comment.user) || current_user.admin? %>
+	                    <%= link_to "Delete", blog_post_comment_path(@blogpost, comment),
+	                                                 method: :delete,
+	                                                 data: { confirm: "Are you sure?"}, 
+	                                                 class: "icon-trash" %>
+	            <% end %>
+	        <% end %>
+        </p>
+    </div>
+<% end %>
+
+<br />
+<%= button_to "Create a new comment", new_blog_post_comment_path(@blogpost),
+                                      class: "new_comment",
+                                      method: "get" %>

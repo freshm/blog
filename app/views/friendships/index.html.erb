@@ -1,12 +1,25 @@
 <div class="center">
     <h1>Your friends</h1>
+    <table class="test_friend">
+    	<tr>
+    		<th colspan="2">User</th>
+    		<th>Option</th>
+    	</tr>
     <% if @friendships.any? %>
 	    <% @friendships.each do |friendship| %>
-	        <%= link_to friend(friendship).full_name, user_path(friend(friendship).id) %>
-	        <%= link_to 'Remove', remove_friend_path(friend(friendship)), class: "icon-remove"%>
-	        <br />
+	    	<tr>
+	    		<% unless friend(friendship).image_url.nil? %>
+	        		<td><%= image_tag friend(friendship).image_url(:thumb).to_s %></td>
+	            <% else %>
+	            	<td><%= image_tag("friendlist_default_avatar.jpg", alt: "Avatar") %></td>
+	            <% end %>
+	        	<td><%= link_to friend(friendship).full_name, user_path(friend(friendship).id) %></td>
+	        	<td><%= link_to 'Remove', remove_friend_path(friend(friendship)), class: "icon-remove"%></td>
+	        </tr>
 	    <% end %>
 	<% else %>
 		<p>You have currently no friends.</p>
 	<% end %>
+	</table>
 </div>
+
