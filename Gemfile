@@ -13,6 +13,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'font-awesome-rails'
 gem 'devise'
+gem 'jquery-ui-rails'
 gem 'letter_opener', :group => :development
 
 # Gems used only for assets and not required

@@ -1,24 +1,30 @@
-<header id="menu">
+<header id="nav">
 	<%= link_to "Sample Blog", root_path, id: "headline" %>
 	<nav>
-		<ul>
-			<li><%= link_to "Home", root_path %></li>
+		<ul class="navigation">
 			
 			
 			<% if signed_in? %>
-				<li><%= link_to current_user.full_name, current_user %></li>
-				<li><%= link_to "Your favourite posts", user_saved_posts_path(current_user) %></li>
-				<li><%= link_to "Your friends", user_friendships_path(current_user) %></li>
-				<% if current_user.admin? %>
-				    <li><%= link_to "Users", users_path %></li>
-				<% end %>
-				<li><%= link_to "Sign out", logout_path %></li>
+			
+			    <% if current_user.admin? %>
+                    <li><%= link_to "Users", users_path %></li>
+                <% end %>
+			
+				<li><%= link_to current_user.full_name, current_user %>
+    				<ul >
+        				<li><%= link_to "Favourite posts", user_saved_posts_path(current_user) %></li>
+        				<li><%= link_to "Your friends", user_friendships_path(current_user) %></li>
+        				<li><%= link_to "Sign out", logout_path %></li>
+    				</ul>
+    				<div class="clear" />
+				</li>
+				
 
 				
 			<% else %>
 				<li><%= link_to "Sign in", login_path %></li>
 			<% end %>
-
+            <li><%= link_to "Home", root_path %></li>
 		</ul>
 	</nav>
 </header>

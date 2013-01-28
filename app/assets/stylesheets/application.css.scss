@@ -11,6 +11,12 @@
  *= require_self
  *= require_tree .
  *=
+ * 
+ * 
+ */
+
+/*
+ *= require jquery.ui.all
  */
 
 @import "font-awesome";
@@ -25,7 +31,7 @@ a {
   color: #000;
 }
 
-#menu {
+#nav {
   height: 25px;
   width: 100%;
   background-color: #007700;
@@ -36,22 +42,44 @@ a {
   a {
     font-weight: bold;
     text-decoration: none;
+    display:block;
   }
+  
   
   #headline {
     float: left;
     text-decoration: none;
   }
   
-  ul {
-    text-align: right;
-    margin: 0px;
-    margin-right: 12px;
+  .navigation {
+    margin:0;
+    padding:0;
+    list-style:none;
+    
     
     li {
-      display: inline;
-      margin-left: 6px;
-      padding-left: 6px;
+      float:right;
+      padding-right: 7.5px;
+      width:auto;
+      position:relative;
+    }
+    
+    ul {
+      position: absolute;
+      left:0;
+      width: 100%;
+      display:none;
+      margin:0px 0 0 -1px;
+      padding:0;
+      list-style: none;
+      border-bottom:3px solid #F2861D;
+      background-color: #070;
+      
+      a {
+        display:block;
+        height:8px;
+        padding: 8px 7px 13px 7px;
+      }
     }
   }
 }
