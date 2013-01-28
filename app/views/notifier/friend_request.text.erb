@@ -1,3 +1,11 @@
-Notifier#friend_request
+Hello <%= @other_user.full_name %>,
 
-<%= @greeting %>, find me in app/views/app/views/notifier/friend_request.text.erb
+<%= @user.full_name %> wants to be friends with you and sended you a friend request.
+To confirm <%= @user.full_name %> as a friend click the following link:
+<%= f_confirmation_url(@friendship.id, @friendship.confirmation_code, :host => "localhost:3000") %>
+
+To decline the request click this link:
+PLACEHOLDER
+
+Sincerly,
+The Sample Blog Administration

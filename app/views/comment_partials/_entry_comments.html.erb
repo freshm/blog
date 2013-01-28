@@ -16,7 +16,7 @@
 	        <% end %>
 	        <% if !current_user?(comment.user) %>
 	            <span class="comment_friends">
-	                <% unless current_user.friends?(comment.user)%>
+	                <% if current_user.friends?(comment.user)%>
 	                    <%= link_to 'Remove from friends', remove_friend_path(comment.user),
 	                                                        method: :delete,
 	                                                        data: { confirm: "You sure?" },

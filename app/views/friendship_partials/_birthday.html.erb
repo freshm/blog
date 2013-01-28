@@ -1,0 +1,6 @@
+<% if birthday_soon(friend(friendship)) %>
+    <%= "Birthday in" + pluralize(friend(friendship).time_to_next_birthday, 'day') %>
+<% end %>
+<% if birthday(friend(friendship)) %>
+    <section class="icon-gift">Birthday today!</section>
+<% end %>

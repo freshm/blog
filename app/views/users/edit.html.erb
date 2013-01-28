@@ -37,7 +37,8 @@
             <%= f.date_select :birthday, order: [:day, :month, :year],
                                          start_year: Time.now.year - 100,
                                          end_year: Time.now.year - 2,
-                                         default: {year: 1990} %>
+                                         default: {year: 1990},
+                                         include_blank: true%>
         </div>
 		<div class="field">
 			<%= f.label :hobbies %>

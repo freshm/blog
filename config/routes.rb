@@ -20,6 +20,7 @@ Blog::Application.routes.draw do
   match '/add_friend/:user_id', to: 'friendships#create', as: 'add_friend'
   match '/rm_friend/:user_id', to: 'friendships#destroy', as: 'remove_friend'
   match '/users/:user_id/confirm/:confirmation_code', to: 'users#confirmation', as: 'confirmation'
+  match '/confirm_friendship/:friendship_id/:confirmation_code', to: 'friendships#confirmation', as: 'f_confirmation'
 
   ##match '/unsavepost', to: 'saved_pages#destroy'
   # The priority is based upon order of creation:

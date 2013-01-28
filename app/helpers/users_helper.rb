@@ -32,6 +32,16 @@ module UsersHelper
      'America',
      'Canada',
      'Australia',
-     'Egypt'].sort
+     'Egypt',
+     'Russia'].sort
+  end
+  
+  def birthday_soon(user)
+    user.time_to_next_birthday <= 7
+  end
+  
+  def birthday(user)
+    user.next_birthday == Date.today
+    # user.birthday.day == Date.today.day && user.birthday.month == Date.today.month
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130121122647) do
+ActiveRecord::Schema.define(:version => 20130128111210) do
 
   create_table "blog_posts", :force => true do |t|
     t.string   "title"
@@ -36,8 +36,10 @@ ActiveRecord::Schema.define(:version => 20130121122647) do
   create_table "friendships", :force => true do |t|
     t.integer  "friend_id"
     t.integer  "other_friend_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                                                      :null => false
+    t.datetime "updated_at",                                                      :null => false
+    t.boolean  "confirmed",         :default => false
+    t.string   "confirmation_code", :default => "cf83a11f53a377b28b13fffa8c9795"
   end
 
   add_index "friendships", ["friend_id", "other_friend_id"], :name => "index_friendships_on_friend_id_and_other_friend_id", :unique => true

@@ -18,12 +18,12 @@ user ein default bild geben - done
 user detail table stylen - done
 thumb-avatar bei den commentaren anzeigen lassen - done
 age in geburtsdatum umwandeln - done
+freischaltung durch bestätigung der mail - done (?)
+freischaltung des friend requests über e-mail - done (?)
+Auf dem Profil das Alter und nicht das Datum anzeigen. - done
+post auf home und bei comments in eine partial tun - done
 
-freischaltung durch bestätigung der mail
-freischaltung des friend requests über e-mail
 
-
-post auf home und bei comments in eine partial tunw
 user hat mehrere hobbies - datenbankeintrag anlegen
 
 admins können user zu admins befördern

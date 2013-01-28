@@ -8,9 +8,8 @@ class Notifier < ActionMailer::Base
   #
   def signed_up(user)
     @user = user
-    @url = 
     
-    mail to: user.email, subject: 'Sign Up Confirmation'
+    mail to: @user.email, subject: 'Sign Up Confirmation.'
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -18,9 +17,11 @@ class Notifier < ActionMailer::Base
   #
   #   en.notifier.friend_request.subject
   #
-  def friend_request
-    @greeting = "Hi"
+  def friend_request(user, other_user)
+    @friendship = Friendship.where(other_friend_id: other_user).where(friend_id: user).first
+    @user = user
+    @other_user = other_user
 
-    mail to: "to@example.org"
+    mail to: @other_user.email, subject: "Friend request."
   end
 end

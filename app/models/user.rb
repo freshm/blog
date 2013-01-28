@@ -46,16 +46,38 @@ class User < ActiveRecord::Base
   end
   
   def befriend!(other_user)
-    self.friendships.create!(other_friend_id: other_user.id)
-    other_user.friendships.create!(other_friend_id: self.id)
+    direction = self.friendships.create!(other_friend_id: other_user.id)
+    other_direction = other_user.friendships.create!(other_friend_id: self.id)
+    other_direction.confirmation_code = SecureRandom.hex(15)
+    other_direction.save!
   end
   
   def friends?(other_user)
-    self.friendships.find_by_other_friend_id(other_user.id).nil?
+    !self.friendships.find_by_other_friend_id(other_user.id).nil?
   end
   
   def unfriend!(other_user)
     self.friendships.find_by_other_friend_id(other_user.id).destroy
     other_user.friendships.find_by_other_friend_id(self.id).destroy
+  end
+  
+  def age
+    (Time.now.year - birthday.year) - (turned_older? ? 0 : 1) rescue 0
+  end
+  
+  def next_birthday
+    bday = Date.new(Date.today.year, birthday.month, birthday.day)
+  end
+  
+  def time_to_next_birthday
+    # in days
+    bday = Date.new(Date.today.year, birthday.month, birthday.day)
+    bday += 1.year if Date.today >= bday
+    (bday - Date.today).to_i
+    # next_birthday.yday - Time.now.yday rescue 0
+  end
+  
+  def turned_older?
+    (birthday.to_time.change(year: Time.now.year) <= Time.now)
   end
 end

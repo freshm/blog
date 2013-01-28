@@ -26,9 +26,11 @@ class UsersController < ApplicationController
       @user.save!
       
       # Routing error, why?
-      # Notifier.signed_up(@user).deliver
+      Notifier.signed_up(@user).deliver
       
       redirect_to root_url, notice: "Signed up!"
+      
+      
     else
       flash.delete(:recaptcha_error)
       render "new"
@@ -62,6 +64,8 @@ class UsersController < ApplicationController
       user.confirmed = true
       user.confirmation_code = nil
       user.save
+      sign_in user
+      session[:user_id] = user.id
       redirect_to root_url, notice: "Your E-Mail Address was confirmed!"
     else
       redirect_to root_path, alert: "Invalid page."
@@ -81,7 +85,7 @@ class UsersController < ApplicationController
   
   def correct_user_for_profile
     @user = User.find(params[:id])
-    redirect_to(root_path) unless current_user?(@user) || current_user.admin?
+    redirect_to(root_path) unless current_user?(@user) || current_user.admin? || current_user.friends?(@user)
   end
   
   def is_admin
