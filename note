@@ -48,3 +48,4 @@ Assuming given the title that you definitely want to avoid Devise, Authlogic and
 für random confirmation code SecureRandom.hex(z) benutzen (z für anzhl (z = 1 entspricht 2 char, z = 2 entspricht 4 chars, z = 4 entspricht 8 chars usw.))
 
 http://railscasts.com/episodes/206-action-mailer-in-rails-3
+http://railsapps.github.com/rails-send-email.html

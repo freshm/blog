@@ -21,7 +21,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if verify_recaptcha(message: "You typed in the wrong captcha!") && @user.save
-      Notifier.signed_up(@user).deliver
+            
+      @user.confirmation_code = SecureRandom.hex(10)
+      @user.save!
+      
+      # Routing error, why?
+      # Notifier.signed_up(@user).deliver
       
       redirect_to root_url, notice: "Signed up!"
     else
